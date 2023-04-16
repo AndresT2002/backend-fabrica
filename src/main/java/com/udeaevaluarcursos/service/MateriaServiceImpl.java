@@ -35,4 +35,9 @@ public class MateriaServiceImpl implements MateriaService{
     public Materia deleteMateria(int id) {
         return null;
     }
+
+    @Override
+    public Materia updateMateria(Materia materia) {
+        return null;
+    }
 }

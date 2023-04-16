@@ -33,6 +33,9 @@ public class Matricula {
     @Column(name="semestre")
     private int semestre;
 
+    @Column(name="calificado")
+    private boolean calificado;
+
 
     public int getIdMatricula() {
         return idMatricula;

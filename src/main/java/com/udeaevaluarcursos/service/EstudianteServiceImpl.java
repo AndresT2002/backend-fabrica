@@ -30,7 +30,12 @@ public class EstudianteServiceImpl implements EstudianteService {
     }
 
     @Override
-    public Estudiante deleteEstudiante(long cedula) {
+    public Estudiante deleteEstudiante(int cedula) {
+        return null;
+    }
+
+    @Override
+    public Estudiante updateEstudiante(Estudiante estudiante) {
         return null;
     }
 }

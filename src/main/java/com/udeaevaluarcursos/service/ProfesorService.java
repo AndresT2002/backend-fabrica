@@ -7,5 +7,7 @@ public interface ProfesorService {
     public List<Profesor> listProfesors();
     public Optional<Profesor> getProfesorById(int id);
     public Profesor createProfesor(Profesor profesor);
-    public Profesor deleteProfesor(Profesor profesor);
+    public Profesor deleteProfesor(int cedula);
+
+    public Profesor updateProfesor(Profesor profesor);
 }

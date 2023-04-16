@@ -33,8 +33,13 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor deleteProfesor(Profesor profesor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteProfesor'");
+    public Profesor deleteProfesor(int cedula) {
+        return null;
     }
+
+    @Override
+    public Profesor updateProfesor(Profesor profesor) {
+        return null;
+    }
+
 }

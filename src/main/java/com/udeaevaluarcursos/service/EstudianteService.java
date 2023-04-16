@@ -11,7 +11,7 @@ public interface EstudianteService {
     public Optional<Estudiante> getEstudianteById(int id);
 
     public Estudiante createEstudiante(Estudiante evaluacionMateria);
-    public Estudiante deleteEstudiante(long cedula);
+    public Estudiante deleteEstudiante(int cedula);
 
     public Estudiante updateEstudiante(Estudiante estudiante);
 }

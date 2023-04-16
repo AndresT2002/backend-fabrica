@@ -10,7 +10,15 @@ public class Estudiante {
     private int id ;
 
     @Column(name="cedula")
-    private long cedula;
+    private int cedula;
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
 
     public int getId() {
         return id;
