@@ -30,11 +30,6 @@ public class Matricula {
     private Profesor idProfesor;
 
 
-
-
-
-
-
     @Column(name="semestre")
     private int semestre;
 

@@ -9,6 +9,8 @@ public class Estudiante {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id ;
 
+    @Column(name="cedula")
+    private long cedula;
 
     public int getId() {
         return id;
