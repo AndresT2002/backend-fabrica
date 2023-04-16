@@ -1,12 +1,11 @@
 package com.udeaevaluarcursos.service;
 import com.udeaevaluarcursos.model.Profesor;
 import java.util.List;
-import java.util.Optional;
 
 public interface ProfesorService {
     public List<Profesor> listProfesors();
-    public Optional<Profesor> getProfesorById(int id);
-    public Profesor createProfesor(Profesor profesor);
+    public Profesor getProfesorByCedula(int cedula);
+    public Profesor createProfesor(Profesor profesor) throws Exception;
     public Profesor deleteProfesor(int cedula);
 
     public Profesor updateProfesor(Profesor profesor);
