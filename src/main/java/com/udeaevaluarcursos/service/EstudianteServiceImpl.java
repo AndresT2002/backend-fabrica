@@ -32,7 +32,7 @@ public class EstudianteServiceImpl implements EstudianteService {
     }
 
     @Override
-    public Estudiante createEstudiante(Estudiante estudiante) {
+    public Estudiante createEstudiante(Estudiante estudiante)  {
 
         Optional<Estudiante> estudiantePorCedula= estudianteRepository.findByCedula(estudiante.getCedula());
 

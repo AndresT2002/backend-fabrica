@@ -23,13 +23,11 @@ public class EstudianteController {
 
         Estudiante estudianteCreado=estudianteServiceImpl.createEstudiante(estudiante);
 
-        if(!estudianteCreado.equals("null")){
+        if(estudianteCreado != null){
             return new ResponseEntity<>(estudianteCreado, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(estudianteCreado, HttpStatus.BAD_REQUEST);
         }
-
-
     }
 
 

@@ -16,30 +16,42 @@ public class ProfesorServiceImpl implements ProfesorService {
 
     @Override
     public List<Profesor> listProfesors() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listProfesors'");
+       List<Profesor> profesors = profesorRepository.findAll();
+       return profesors;
     }
 
     @Override
-    public Profesor getProfesorById(int cedula) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProfesorById'");
+    public Profesor getProfesorByCedula(int cedula) {
+        Optional<Profesor> profesor = profesorRepository.findByCedula(cedula);
+        if(!profesor.isPresent()){
+            return null;
+        }
+        return profesor.get();
+
     }
 
     @Override
-    public Profesor createProfesor(Profesor profesor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createProfesor'");
+    public Profesor createProfesor(Profesor profesor) throws Exception {
+        Optional<Profesor> tempProfesor = profesorRepository.findByCedula(profesor.getCedula());
+        if(tempProfesor.isPresent()){
+            throw new Exception("A professor already exists with that cedula");
+        }
+        return profesorRepository.save(profesor);
     }
 
     @Override
     public Profesor deleteProfesor(int cedula) {
-        return null;
+        Optional<Profesor> profesor = profesorRepository.deleteByCedula(cedula);
+        if(!profesor.isPresent()){
+            return null;
+        }
+        return profesor.get();
     }
 
     @Override
     public Profesor updateProfesor(Profesor profesor) {
-        return null;
+        Profesor newProfesor = profesorRepository.save(profesor);
+        return newProfesor;
     }
 
 }
