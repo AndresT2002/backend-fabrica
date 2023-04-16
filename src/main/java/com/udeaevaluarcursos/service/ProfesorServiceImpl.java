@@ -21,7 +21,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Optional<Profesor> getProfesorById(int id) {
+    public Profesor getProfesorById(int cedula) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getProfesorById'");
     }

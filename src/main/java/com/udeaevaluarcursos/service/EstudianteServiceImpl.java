@@ -16,26 +16,56 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public List<Estudiante> listEstudiantes() {
-        return null;
+        List<Estudiante> listadoEstudiantes = estudianteRepository.findAll();
+
+        return listadoEstudiantes;
     }
 
     @Override
-    public Optional<Estudiante> getEstudianteById(int id) {
-        return Optional.empty();
+    public Estudiante getEstudianteByCedula(int cedula) {
+        Optional<Estudiante> estudiante= estudianteRepository.findByCedula(cedula);
+        if (!estudiante.isPresent()) {
+            return null;
+        }
+
+        return estudiante.get();
     }
 
     @Override
-    public Estudiante createEstudiante(Estudiante evaluacionMateria) {
-        return null;
+    public Estudiante createEstudiante(Estudiante estudiante) {
+
+        Optional<Estudiante> estudiantePorCedula= estudianteRepository.findByCedula(estudiante.getCedula());
+
+        if(estudiantePorCedula.isPresent()) {
+            return null;
+    }
+
+        estudianteRepository.save(estudiante);
+
+        return estudiante;
     }
 
     @Override
     public Estudiante deleteEstudiante(int cedula) {
-        return null;
+        Optional<Estudiante> estudiante= estudianteRepository.findByCedula(cedula);
+        if (!estudiante.isPresent()) {
+            return null;
+        }
+        estudianteRepository.delete(estudiante.get());
+
+        return estudiante.get();
     }
 
     @Override
     public Estudiante updateEstudiante(Estudiante estudiante) {
-        return null;
+        Optional<Estudiante> estudianteActualizar= estudianteRepository.findByCedula(estudiante.getCedula());
+        if (!estudianteActualizar.isPresent()) {
+            return null;
+        }
+
+        estudianteRepository.save(estudianteActualizar.get());
+
+
+        return estudianteActualizar.get();
     }
 }

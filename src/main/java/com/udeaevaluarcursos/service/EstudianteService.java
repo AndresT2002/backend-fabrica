@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface EstudianteService {
     public List<Estudiante> listEstudiantes();
-    public Optional<Estudiante> getEstudianteById(int id);
+    public Estudiante getEstudianteByCedula(int cedula);
 
-    public Estudiante createEstudiante(Estudiante evaluacionMateria);
+    public Estudiante createEstudiante(Estudiante estudiante);
     public Estudiante deleteEstudiante(int cedula);
 
     public Estudiante updateEstudiante(Estudiante estudiante);

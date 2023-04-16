@@ -3,7 +3,7 @@ package com.udeaevaluarcursos.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="evaluacion_materia")
+@Table(name="estudiante")
 public class Estudiante {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

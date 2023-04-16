@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface ProfesorService {
     public List<Profesor> listProfesors();
-    public Optional<Profesor> getProfesorById(int id);
+    public Profesor getProfesorById(int cedula );
     public Profesor createProfesor(Profesor profesor);
     public Profesor deleteProfesor(int cedula);
 
