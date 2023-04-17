@@ -1,6 +1,8 @@
 package com.udeaevaluarcursos.service;
 
+import com.udeaevaluarcursos.model.Estudiante;
 import com.udeaevaluarcursos.model.EvaluacionMateria;
+import com.udeaevaluarcursos.model.Materia;
 import com.udeaevaluarcursos.repository.EvaluacionMateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,21 +18,42 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
     EvaluacionMateriaRepository evaluacionMateriaRepository;
     @Override
     public List<EvaluacionMateria> listEvaluacionesMaterias() {
-        return null;
+        List<EvaluacionMateria> listadoEvaluacionesMaterias = evaluacionMateriaRepository.findAll();
+
+        return listadoEvaluacionesMaterias;
     }
 
     @Override
-    public Optional<EvaluacionMateria> getEvaluacionMateriaById(int id) {
-        return Optional.empty();
+    public EvaluacionMateria getEvaluacionMateriaById(int id) {
+        Optional<EvaluacionMateria> evaluacionMateria= evaluacionMateriaRepository.findById(id);
+        if (!evaluacionMateria.isPresent()) {
+            return null;
+        }
+
+        return evaluacionMateria.get();
     }
 
     @Override
     public EvaluacionMateria createEvaluacionMateria(EvaluacionMateria evaluacionMateria) {
-        return null;
+        Optional<EvaluacionMateria> evaluacionMateriaPorId= evaluacionMateriaRepository.findById(evaluacionMateria.getIdEvaluacionMateria());
+
+        if(evaluacionMateriaPorId.isPresent()) {
+            return null;
+        }
+
+        evaluacionMateriaRepository.save(evaluacionMateria);
+
+        return evaluacionMateria;
     }
 
     @Override
     public EvaluacionMateria deleteEvaluacionMateria(int id) {
-        return null;
+        Optional<EvaluacionMateria> evaluacionMateria= evaluacionMateriaRepository.findById(id);
+        if (!evaluacionMateria.isPresent()) {
+            return null;
+        }
+        evaluacionMateriaRepository.delete(evaluacionMateria.get());
+
+        return evaluacionMateria.get();
     }
 }

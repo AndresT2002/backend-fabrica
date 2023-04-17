@@ -25,7 +25,6 @@ public class EvaluacionMateria {
 
     @JoinColumn(name = "idMatricula")
     @OneToOne()
-    @JsonManagedReference
     private Matricula idMatricula;
 
     @Column(name="feedback")
