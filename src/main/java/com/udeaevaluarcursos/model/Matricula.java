@@ -15,18 +15,15 @@ public class Matricula {
 
     @JoinColumn(name = "idEstudiante")
     @ManyToOne()
-    @JsonBackReference
     private Estudiante idEstudiante;
 
     @JoinColumn(name = "idMateria")
     @ManyToOne()
-    @JsonBackReference
     private Materia idMateria;
 
 
     @JoinColumn(name = "idProfesor")
     @ManyToOne()
-    @JsonBackReference
     private Profesor idProfesor;
 
 
@@ -34,8 +31,15 @@ public class Matricula {
     private int semestre;
 
     @Column(name="calificado")
-    private boolean calificado;
+    private int calificado;
 
+    public int getCalificado() {
+        return calificado;
+    }
+
+    public void setCalificado(int calificado) {
+        this.calificado = calificado;
+    }
 
     public int getIdMatricula() {
         return idMatricula;

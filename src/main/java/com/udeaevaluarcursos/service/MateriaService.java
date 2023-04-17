@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface MateriaService {
     public List<Materia> listMaterias();
-    public Optional<Materia> getMateriaById(int id);
+    public Materia getMateriaById(int id);
     public Materia createMateria(Materia materia);
     public Materia deleteMateria(int id);
     public Materia updateMateria(Materia materia);

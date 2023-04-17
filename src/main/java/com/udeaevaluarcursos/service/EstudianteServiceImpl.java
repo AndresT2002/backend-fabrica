@@ -1,6 +1,7 @@
 package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.model.Estudiante;
+import com.udeaevaluarcursos.model.Profesor;
 import com.udeaevaluarcursos.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,14 +59,16 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public Estudiante updateEstudiante(Estudiante estudiante) {
-        Optional<Estudiante> estudianteActualizar= estudianteRepository.findByCedula(estudiante.getCedula());
+        Optional<Estudiante> estudianteActualizar= estudianteRepository.findById(estudiante.getIdEstudiante());
         if (!estudianteActualizar.isPresent()) {
             return null;
         }
+        Estudiante estudianteActualizado= estudianteActualizar.get();
 
-        estudianteRepository.save(estudianteActualizar.get());
+        estudianteActualizado.setCedula(estudiante.getCedula());
+        estudianteRepository.save(estudianteActualizado);
 
 
-        return estudianteActualizar.get();
+        return estudianteActualizado;
     }
 }

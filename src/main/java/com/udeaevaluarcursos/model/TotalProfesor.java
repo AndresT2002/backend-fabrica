@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class TotalProfesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idTotalProfesor;
 
     @JoinColumn(name = "idMateria")
     @ManyToOne()
@@ -38,12 +38,12 @@ public class TotalProfesor {
     private int promedioNotaCinco;
 
 
-    public int getId() {
-        return id;
+    public int getIdTotalProfesor() {
+        return idTotalProfesor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTotalProfesor(int id) {
+        this.idTotalProfesor = id;
     }
 
     public Materia getIdMateria() {

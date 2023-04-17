@@ -1,6 +1,8 @@
 package com.udeaevaluarcursos.service;
 
+import com.udeaevaluarcursos.model.Estudiante;
 import com.udeaevaluarcursos.model.Materia;
+import com.udeaevaluarcursos.model.Profesor;
 import com.udeaevaluarcursos.repository.EvaluacionProfesorRepository;
 import com.udeaevaluarcursos.repository.MateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,26 +20,55 @@ public class MateriaServiceImpl implements MateriaService{
 
     @Override
     public List<Materia> listMaterias() {
-        return null;
+        List<Materia> listadoMaterias = materiaRepository.findAll();
+
+        return listadoMaterias;
     }
 
     @Override
-    public Optional<Materia> getMateriaById(int id) {
-        return Optional.empty();
+    public Materia getMateriaById(int id) {
+        Optional<Materia> materia= materiaRepository.findById(id);
+        if (!materia.isPresent()) {
+            return null;
+        }
+
+        return materia.get();
     }
 
     @Override
     public Materia createMateria(Materia materia) {
-        return null;
+        Optional<Materia> materiaPorId= materiaRepository.findById(materia.getIdMateria());
+
+        if(materiaPorId.isPresent()) {
+            return null;
+        }
+
+        materiaRepository.save(materia);
+
+        return materia;
     }
 
     @Override
     public Materia deleteMateria(int id) {
-        return null;
+        Optional<Materia> materia= materiaRepository.findById(id);
+        if (!materia.isPresent()) {
+            return null;
+        }
+        materiaRepository.delete(materia.get());
+
+        return materia.get();
     }
 
     @Override
     public Materia updateMateria(Materia materia) {
-        return null;
+        Optional<Materia> materiaActualizar= materiaRepository.findById(materia.getIdMateria());
+        if (!materiaActualizar.isPresent()) {
+            return null;
+        }
+
+        materiaRepository.save(materiaActualizar.get());
+
+
+        return materiaActualizar.get();
     }
 }

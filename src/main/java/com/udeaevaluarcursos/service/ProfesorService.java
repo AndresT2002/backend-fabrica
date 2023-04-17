@@ -6,7 +6,7 @@ public interface ProfesorService {
     public List<Profesor> listProfesors();
 
     public Profesor getProfesorByCedula(int cedula);
-    public Profesor createProfesor(Profesor profesor) throws Exception;
+    public Profesor createProfesor(Profesor profesor);
 
     public Profesor deleteProfesor(int cedula);
 

@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Estudiante {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id ;
+    private int idEstudiante ;
 
     @Column(name="cedula")
     private int cedula;
@@ -20,12 +20,12 @@ public class Estudiante {
         this.cedula = cedula;
     }
 
-    public int getId() {
-        return id;
+    public int getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEstudiante(int id) {
+        this.idEstudiante = id;
     }
 
     public Estudiante(){

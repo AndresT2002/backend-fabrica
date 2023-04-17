@@ -10,7 +10,7 @@ public class TotalMateria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idTotalMateria;
 
 
     @JoinColumn(name = "idMateria")
@@ -37,12 +37,12 @@ public class TotalMateria {
 
 
 
-    public int getId() {
-        return id;
+    public int getIdTotalMateria() {
+        return idTotalMateria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTotalMateria(int id) {
+        this.idTotalMateria = id;
     }
 
     public Materia getIdMateria() {

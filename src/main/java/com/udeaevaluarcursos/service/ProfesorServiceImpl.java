@@ -3,6 +3,8 @@ package com.udeaevaluarcursos.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.udeaevaluarcursos.model.Estudiante;
+import com.udeaevaluarcursos.model.Matricula;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,27 +33,38 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor createProfesor(Profesor profesor) throws Exception {
+    public Profesor createProfesor(Profesor profesor)  {
         Optional<Profesor> tempProfesor = profesorRepository.findByCedula(profesor.getCedula());
         if(tempProfesor.isPresent()){
-            throw new Exception("A professor already exists with that cedula");
+            return null;
         }
         return profesorRepository.save(profesor);
     }
 
     @Override
     public Profesor deleteProfesor(int cedula) {
-        Optional<Profesor> profesor = profesorRepository.deleteByCedula(cedula);
-        if(!profesor.isPresent()){
+        Optional<Profesor> profesor= profesorRepository.findByCedula(cedula);
+        if (!profesor.isPresent()) {
             return null;
         }
+        profesorRepository.delete(profesor.get());
+
         return profesor.get();
     }
 
     @Override
     public Profesor updateProfesor(Profesor profesor) {
-        Profesor newProfesor = profesorRepository.save(profesor);
-        return newProfesor;
+        Optional<Profesor> profesorActualizar= profesorRepository.findById(profesor.getIdProfesor());
+        if (!profesorActualizar.isPresent()) {
+            return null;
+        }
+        Profesor profesorActualizado= profesorActualizar.get();
+
+        profesorActualizado.setCedula(profesor.getCedula());
+        profesorRepository.save(profesorActualizado);
+
+
+        return profesorActualizado;
     }
 
 }
