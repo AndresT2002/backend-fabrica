@@ -10,9 +10,9 @@ public interface EvaluacionProfesorService {
 
 
     public List<EvaluacionProfesor> listEvaluacionesProfesores();
-    public Optional<EvaluacionProfesor> getEvaluacionProfesorById(int id);
+    public EvaluacionProfesor getEvaluacionProfesorById(int id);
 
-    public EvaluacionProfesor createEvaluacionProfesor(EvaluacionMateria evaluacionMateria);
+    public EvaluacionProfesor createEvaluacionProfesor(EvaluacionProfesor evaluacionProfesor);
     public EvaluacionProfesor deleteEvaluacionProfesor(int id);
 
 

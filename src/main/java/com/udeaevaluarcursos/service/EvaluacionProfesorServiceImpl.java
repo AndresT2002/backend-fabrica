@@ -20,21 +20,42 @@ public class EvaluacionProfesorServiceImpl implements EvaluacionProfesorService{
 
     @Override
     public List<EvaluacionProfesor> listEvaluacionesProfesores() {
-        return null;
+        List<EvaluacionProfesor> listadoEvaluacionesProfesores = evaluacionProfesorRepository.findAll();
+
+        return listadoEvaluacionesProfesores;
     }
 
     @Override
-    public Optional<EvaluacionProfesor> getEvaluacionProfesorById(int id) {
-        return Optional.empty();
+    public EvaluacionProfesor getEvaluacionProfesorById(int id) {
+        Optional<EvaluacionProfesor> evaluacionProfesor= evaluacionProfesorRepository.findById(id);
+        if (!evaluacionProfesor.isPresent()) {
+            return null;
+        }
+
+        return evaluacionProfesor.get();
     }
 
     @Override
-    public EvaluacionProfesor createEvaluacionProfesor(EvaluacionMateria evaluacionMateria) {
-        return null;
+    public EvaluacionProfesor createEvaluacionProfesor(EvaluacionProfesor evaluacionProfesor) {
+        Optional<EvaluacionProfesor> evaluacionProfesorPorId= evaluacionProfesorRepository.findById(evaluacionProfesor.getIdEvaluacionProfesor());
+
+        if(evaluacionProfesorPorId.isPresent()) {
+            return null;
+        }
+
+        evaluacionProfesorRepository.save(evaluacionProfesor);
+
+        return evaluacionProfesor;
     }
 
     @Override
     public EvaluacionProfesor deleteEvaluacionProfesor(int id) {
-        return null;
+        Optional<EvaluacionProfesor> evaluacionProfesor= evaluacionProfesorRepository.findById(id);
+        if (!evaluacionProfesor.isPresent()) {
+            return null;
+        }
+        evaluacionProfesorRepository.delete(evaluacionProfesor.get());
+
+        return evaluacionProfesor.get();
     }
 }
